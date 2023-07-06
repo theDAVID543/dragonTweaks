@@ -1,0 +1,10 @@
+name: dragonTweaks
+version: '${project.version}'
+main: thedavid.dragontweaks.DragonTweaks
+api-version: 1.19
+commands:
+  resetend:
+    usage: "/resetend"
+    permission: "op"
+    permission-message: "Only op can do that!"
+
