@@ -1,25 +1,24 @@
 package thedavid.dragontweaks;
 
 import org.bukkit.Bukkit;
-import org.bukkit.World;
-import org.bukkit.WorldCreator;
-import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-
 public final class DragonTweaks extends JavaPlugin implements CommandExecutor {
-    public static JavaPlugin instance;
+    public JavaPlugin instance;
+    public commander commander;
+    public task task;
 
     @Override
     public void onEnable() {
         // Plugin startup logic
         instance = this;
+        commander = new commander(this);
+        task = new task(this);
         if (Bukkit.getPluginCommand("resetend") != null) {
-            Bukkit.getPluginCommand("resetend").setExecutor(new commander());
+            Bukkit.getPluginCommand("resetend").setExecutor(commander);
         }
+        task.dragonTimerTask();
     }
 
     @Override
